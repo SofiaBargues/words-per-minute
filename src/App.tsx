@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 
 const WORDS = [
-  "ballena",
-  "cabra",
-  "delfin",
-  "elefante",
-  "foca",
-  "gato",
-  "hiena",
+  "whale",
+  "goat",
+  "dolphin",
+  "elephant",
+  "seal",
+  "cat",
+  "hyena",
   "iguana",
-  "jirafa",
-  "perro",
+  "giraffe",
+  "dog",
 ];
 
 export default function WordsPerMinute() {
-  const [word, setWord] = useState(
-    () => WORDS[(Math.random() * WORDS.length) | 0]
-  );
+  const [word, setWord] = useState(() => {
+    return WORDS[(Math.random() * WORDS.length) | 0];
+  });
   const [characterCount, setCharacterCount] = useState(0);
   const [buffer, setBuffer] = useState("");
   const [time, setTime] = useState(0);
@@ -43,15 +43,15 @@ export default function WordsPerMinute() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 12,
+        gap: 2,
         textAlign: "center",
       }}
     >
-      {Boolean(time) && <h1 style={{ fontSize: 48 }}>{word} </h1>}
-      <h2> Characters typed: {characterCount}</h2>
-      <h3> Remainig time: {time}</h3>
+      {Boolean(time) && <h1 style={{ fontSize: 60 }}>{word} </h1>}
+      <h2>Typed {characterCount} characters </h2>
       {time !== 0 ? (
         <form onSubmit={handleSubmit}>
+          <h3> Remainig time: {time}</h3>
           <input
             value={buffer}
             onChange={(e) => setBuffer(e.target.value)}
@@ -63,7 +63,7 @@ export default function WordsPerMinute() {
       ) : (
         <button
           onClick={() => {
-            setTime(60);
+            setTime(30);
             setCharacterCount(0);
           }}
         >
